@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/yaldaAI/yaldaAI.iml" filepath="$PROJECT_DIR$/yaldaAI/yaldaAI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yaldaCatalog/yaldaCatalog.iml" filepath="$PROJECT_DIR$/yaldaCatalog/yaldaCatalog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yaldaChat/yaldaChat.iml" filepath="$PROJECT_DIR$/yaldaChat/yaldaChat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yaldaIdentity/yaldaIdentity.iml" filepath="$PROJECT_DIR$/yaldaIdentity/yaldaIdentity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yaldaNotification/yaldaNotification.iml" filepath="$PROJECT_DIR$/yaldaNotification/yaldaNotification.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yaldaPayment/yaldaPayment.iml" filepath="$PROJECT_DIR$/yaldaPayment/yaldaPayment.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yaldaSupport/yaldaSupport.iml" filepath="$PROJECT_DIR$/yaldaSupport/yaldaSupport.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/yaldafm.iml" filepath="$PROJECT_DIR$/.idea/yaldafm.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/yaldaAI" />
+    <file type="web" url="file://$PROJECT_DIR$/yaldaCatalog" />
+    <file type="web" url="file://$PROJECT_DIR$/yaldaChat" />
+    <file type="web" url="file://$PROJECT_DIR$/yaldaIdentity" />
+    <file type="web" url="file://$PROJECT_DIR$/yaldaNotification" />
+    <file type="web" url="file://$PROJECT_DIR$/yaldaPayment" />
+    <file type="web" url="file://$PROJECT_DIR$/yaldaSupport" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/yaldaAI/pom.xml" />
+        <option value="$PROJECT_DIR$/yaldaCatalog/pom.xml" />
+        <option value="$PROJECT_DIR$/yaldaChat/pom.xml" />
+        <option value="$PROJECT_DIR$/yaldaIdentity/pom.xml" />
+        <option value="$PROJECT_DIR$/yaldaNotification/pom.xml" />
+        <option value="$PROJECT_DIR$/yaldaPayment/pom.xml" />
+        <option value="$PROJECT_DIR$/yaldaSupport/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
