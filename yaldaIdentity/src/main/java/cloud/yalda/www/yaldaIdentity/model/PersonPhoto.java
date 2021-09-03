@@ -19,7 +19,7 @@ public class PersonPhoto implements Serializable {
     @Serial
     private static final long serialVersionUID = -2773185253847666484L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long fileId;
     @Lob
     private byte[] fileContent;

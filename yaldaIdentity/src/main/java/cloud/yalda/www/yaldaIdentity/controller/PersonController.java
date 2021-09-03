@@ -1,17 +1,18 @@
 package cloud.yalda.www.yaldaIdentity.controller;
 
-import com.yaldafm.www.identity.CustomeExceptions.UserException;
-import com.yaldafm.www.identity.dto.AuthenticateDto;
-import com.yaldafm.www.identity.dto.ProfileUpdateDto;
-import com.yaldafm.www.identity.dto.UpdatePassDto;
-import com.yaldafm.www.identity.helper.ApiResult;
-import com.yaldafm.www.identity.service.PersonService;
+import cloud.yalda.www.yaldaIdentity.CustomeExceptions.UserException;
+import cloud.yalda.www.yaldaIdentity.dto.AuthenticateDto;
+import cloud.yalda.www.yaldaIdentity.dto.ProfileUpdateDto;
+import cloud.yalda.www.yaldaIdentity.dto.UpdatePassDto;
+import cloud.yalda.www.yaldaIdentity.helper.ApiResult;
+import cloud.yalda.www.yaldaIdentity.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(name = "person",path = "/identity/person")
+@RequestMapping(name = "Identity manager",path = "/identity/person/v1")
 public class PersonController {
    @Autowired
     private final PersonService _personService;
@@ -28,15 +29,23 @@ public class PersonController {
 
         try {
             var result= _personService.getProfile(id);
-            _result.setHttpStatus(HttpStatus.OK);
             _result.setData(result);
 
         } catch (Exception e) {
-        _result.setMessage(e.getMessage());
-            _result.setSuccess(false);
-            _result.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
-            _result.setTotalCount(0);
-            _result.setCurrentCount(0);
+        _result.fatalError(e);
+        }
+        return _result;
+    }
+
+    @PostMapping(name = "list-all",path = "/list-all")
+    public ApiResult listAll(@RequestBody Pageable page){
+
+        try {
+            var result= _personService.listAll(page);
+            _result.setData(result);
+
+        } catch (Exception e) {
+            _result.fatalError(e);
         }
         return _result;
     }
@@ -46,15 +55,11 @@ public class PersonController {
 
         try {
             var result= _personService.register(email);
-            _result.setHttpStatus(HttpStatus.OK);
+            _result.saved();
             _result.setData(result);
 
-        } catch (Exception e) {
-            _result.setMessage(e.getMessage());
-            _result.setSuccess(false);
-            _result.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
-            _result.setTotalCount(0);
-            _result.setCurrentCount(0);
+        } catch (Exception e) {_result.fatalError(e);
+
         }
         return _result;
     }
@@ -63,50 +68,33 @@ public class PersonController {
 
         try {
             var result= _personService.authenticate(dto.getEmail(),dto.getPassword());
-            _result.setHttpStatus(HttpStatus.OK);
-            _result.setData(result);
+          _result.setData(result);
 
         } catch (Exception e) {
-            _result.setMessage(e.getMessage());
-            _result.setSuccess(false);
-            _result.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
-            _result.setTotalCount(0);
-            _result.setCurrentCount(0);
+            _result.fatalError(e);
         }
         return _result;
     }
     @PutMapping(name = "putPassword",path = "/put-password")
     public ApiResult putPassword(@RequestBody UpdatePassDto dto){
-
         try {
-            var result= _personService.updatePassword(dto);
-            _result.setHttpStatus(HttpStatus.OK);
-            _result.setData(result);
+            _personService.updatePassword(dto);
+            _result.saved();
 
-        } catch (Exception e) {
-            _result.setMessage(e.getMessage());
-            _result.setSuccess(false);
-            _result.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
-            _result.setTotalCount(0);
-            _result.setCurrentCount(0);
-        }
+        } catch (Exception e) {_result.fatalError(e); }
         return _result;
     }
     @PutMapping(name = "put",path = "/")
     public ApiResult put(@RequestBody ProfileUpdateDto dto){
 
         try {
-            var result= _personService.update(dto);
-            _result.setHttpStatus(HttpStatus.OK);
-            _result.setData(result);
+            _personService.update(dto);
+            _result.saved();
 
-        } catch (Exception e) {
-            _result.setMessage(e.getMessage());
-            _result.setSuccess(false);
-            _result.setHttpStatus(HttpStatus.EXPECTATION_FAILED);
-            _result.setTotalCount(0);
-            _result.setCurrentCount(0);
+
+        } catch (Exception e) {_result.fatalError(e);
         }
         return _result;
     }
+
 }

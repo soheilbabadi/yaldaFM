@@ -13,8 +13,9 @@ import java.time.LocalDateTime;
 @Entity
 public class VerifyCode implements Serializable {
     @Id
-    @Column(length = 50,columnDefinition = "varchar(50)",nullable = false)
-    private String email;
+    //@Column(length = 50,columnDefinition = "varchar(50)",nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long email;
     @Column(length = 50,columnDefinition = "varchar(50)",nullable = false)
     private String vrfCode;
     @Column(nullable = false)

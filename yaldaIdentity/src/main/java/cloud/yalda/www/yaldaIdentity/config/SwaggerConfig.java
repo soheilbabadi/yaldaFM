@@ -25,7 +25,7 @@ public class SwaggerConfig implements WebMvcConfigurer {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2).select()
-                .apis(RequestHandlerSelectors.basePackage("com.yaldafm.www.identity")).paths(PathSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("cloud.yalda.www.yaldaIdentity")).paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo());
     }

@@ -3,15 +3,17 @@ package cloud.yalda.www.yaldaIdentity.helper;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
-
+@Slf4j
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Component
 public class ApiResultImp implements ApiResult {
     private Object data = null;
+
     private long totalCount = 1;
     private long currentCount = 1;
     private String message = "done successful!";
@@ -21,7 +23,7 @@ public class ApiResultImp implements ApiResult {
 
     @Override
     public ApiResultImp saved() {
-        this.data = null;
+        this.data = 1;
         this.totalCount = 1;
         this.currentCount = 1;
         this.message = "done successful!";
@@ -33,6 +35,7 @@ public class ApiResultImp implements ApiResult {
 
     @Override
     public ApiResultImp fatalError(Exception ex) {
+        log.error(Utils.getUtc() + " : " + ex.getMessage());
         this.data = null;
         this.totalCount = 0;
         this.currentCount = 0;

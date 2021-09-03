@@ -10,7 +10,11 @@ import cloud.yalda.www.yaldaIdentity.repo.PersonRepo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @Slf4j
@@ -110,6 +114,12 @@ class PersonServiceImp implements PersonService {
                 .build();
         _personRepo.save(entity);
         return username;
+    }
+
+    public List<Person> listAll(Pageable page){
+      var result=  _personRepo.findAll(page);
+      return  result.toList();
+
     }
 
 }
